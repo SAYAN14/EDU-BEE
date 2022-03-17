@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="icon" href="CALCULATOR.png">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:ital@1&family=Rubik&display=swap" rel="stylesheet">
+    <title>Simple Calculator</title>
+    <style>
+        .container{
+            height: 500px;
+            width:430px;
+            background-color: rgba(255, 255, 255, 0.5);
+            background-image: url(https://images.unsplash.com/photo-1610465299993-e6675c9f9efa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+            background-size: cover;
+            margin-top: 3%;
+            padding: 1.3%;
+            border-radius:20px;
+            box-shadow: 5px 5px 5px 5px #888888;
+
+            
+        }
+        .glow {
+  background-color: #FFFFFF;
+    border: 2px solid #39ffd4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+.glow:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+#font{
+font-family: 'Overpass', sans-serif;
+font-family: 'Rubik', sans-serif;
+}
+#1st{
+    margin: 50px;
+    padding:2px;
+}
+#2nd{
+    margin-left: 50px;
+    padding:2px; 
+}
+input{
+    margin:5px 5px 5px 5px;
+}
+     /* margin:5px 5px 5px 5px; //left,right,top,bottom// 
+} */
+body{
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+</style>
+    
+
+</head>
+<body>
+    <div class = "container">
+    <center>
+        <h3 id="font"> Simple Calculator</h3>
+        <br>
+    <table>
+        <tr>
+            <td><input type="number" id="1st" class ="glow" name="1st" placeholder="input 1st value" pattern="[0-9]+" required></td>
+            <td><input type="number" id="2nd" class="glow" placeholder="input 2nd value" name="2nd" pattern="[0-9]+" required></td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" id="one" value="1" class="btn btn-outline-primary" >
+
+            </td>
+            <td>
+                <input type="submit" id="two" value="2"class="btn btn-outline-secondary" >
+            </td>
+            <td>
+                <input type="submit" id="three" value="3" class="btn btn-outline-success"> 
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" id="four" value="4" class="btn btn-outline-danger">
+
+            </td>
+            <td>
+                <input type="submit" id="five" value="5" class="btn btn-outline-info" >
+            </td>
+            <td>
+                <input type="submit" id="six" value="6" class="btn btn-outline-warning"> 
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" id="seven" value="7" class="btn btn-outline-success">
+
+            </td>
+            <td>
+                <input type="submit" id="eight" value="8"  class="btn btn-outline-dark"> 
+            </td>
+            <td>
+                <input type="submit" id="nine" value="9" class="btn btn-outline-primary" > 
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td><input type="submit" id="sum" value="+" onclick="sum()" class="btn btn-primary"></td>
+            <td><input type="submit" id="sub" value="-" onclick="sub()" class="btn btn-warning"></td>
+            <td><input type="submit" id="mul" value="x" onclick="mul()" class="btn btn-info"></td>
+            <td><input type="submit" id="div" value="/" onclick="div()" class="btn btn-secondary"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <b><div id="output"></div></b>
+            </td>
+        </tr>
+    </table>
+    </center>
+    </div>
+    <script>
+        function sum(){
+            const a =parseInt(document.getElementById("1st").value);
+            const b = parseInt (document.getElementById("2nd").value);
+            var output = a+b;
+            document.getElementById("output").innerHTML = "Sum Output : "+output;
+        }
+        function sub(){
+            const a =parseInt(document.getElementById("1st").value);
+            const b = parseInt (document.getElementById("2nd").value);
+            var output =0;
+            if(a>b){
+                output += (a-b);
+            }
+            else{
+                output += (b-a);
+            }
+            document.getElementById("output").innerHTML = "Sub Output : "+output;
+        }
+        function mul(){
+            const a =parseInt(document.getElementById("1st").value);
+            const b = parseInt (document.getElementById("2nd").value);
+            var output = a*b;
+            document.getElementById("output").innerHTML = "Mul Output : "+output;
+        }
+        function div(){
+            const a =parseInt(document.getElementById("1st").value);
+            const b = parseInt (document.getElementById("2nd").value);
+            var output = 0;
+            if(b>0){
+                output += (a/b);
+                document.getElementById("output").innerHTML = "Div Output : "+output;
+            }
+            else{
+                document.getElementById("output").innerHTML = "Syntex Error";
+            }
+        }
+        
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
